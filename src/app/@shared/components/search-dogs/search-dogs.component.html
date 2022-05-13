@@ -1,0 +1,35 @@
+<div class="form-group">
+  <label for="dogsearch">Dog Search</label>
+  <input
+    type="text"
+    class="form-control"
+    name="dog search"
+    id="dogsearch"
+    aria-describedby="helpId"
+    [(ngModel)]="searchStr"
+    (keyup.enter)="search(searchStr)"
+    placeholder="Search dogs..."
+  />
+  <small id="helpId" class="form-text text-muted">Help text</small>
+</div>
+
+<div class="mb-3 row">
+  <div class="col">
+    <input
+      placeholder="Search doggies..."
+      id="typeahead-template"
+      type="text"
+      class="form-control col"
+      [(ngModel)]="searchStr"
+      [ngbTypeahead]="search_ngb"
+      [resultTemplate]="rt"
+      [inputFormatter]="formatter"
+    />
+  </div>
+</div>
+
+<ng-template #rt let-r="result" let-t="term">
+  <img [src]="r.image.url" class="me-1" style="width: 20px" />
+  <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+  <small>{{ r.bred_for }}</small>
+</ng-template>

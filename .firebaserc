@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dog-app-51de5": {
+      "hosting": {
+        "dog-web-app": [
+          "dog-app-51de5"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dog-app-51de5"
+  }
+}
