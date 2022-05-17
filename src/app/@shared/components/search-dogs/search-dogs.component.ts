@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DogServiceService } from '@app/services/dog-service.service';
 import FuzzySearch from 'fuzzy-search';
-import { FilterByPipe, GroupByPipe } from 'ngx-pipes';
+import { FilterByPipe, GroupByPipe, SlugifyPipe } from 'ngx-pipes';
 import { debounceTime, map, Observable, OperatorFunction } from 'rxjs';
 import { Breed } from 'src/models/breed.model';
 // import { FuzzySearch } from 'fuzzy-search';
@@ -11,7 +12,7 @@ import { Breed } from 'src/models/breed.model';
   selector: 'app-search-dogs',
   templateUrl: './search-dogs.component.html',
   styleUrls: ['./search-dogs.component.scss'],
-  providers: [FilterByPipe, GroupByPipe],
+  providers: [FilterByPipe, GroupByPipe, SlugifyPipe],
 })
 export class SearchDogsComponent implements OnInit {
   results: Breed[] = [];
@@ -19,7 +20,13 @@ export class SearchDogsComponent implements OnInit {
 
   searchStr: string = '';
   filtersList: any[] = [];
-  constructor(private dogService: DogServiceService, private filter: FilterByPipe, private groupBy: GroupByPipe) {}
+  constructor(
+    private dogService: DogServiceService,
+    private filter: FilterByPipe,
+    private groupBy: GroupByPipe,
+    private router: Router,
+    private slugify: SlugifyPipe
+  ) {}
 
   ngOnInit(): void {
     this.dogService.breeds.subscribe((breeds: Breed[]) => {
@@ -63,6 +70,16 @@ export class SearchDogsComponent implements OnInit {
     console.log(result);
 
     return result;
+  }
+
+  route_to_breed(event: Breed) {
+    this.router.navigateByUrl(`breed/${this.slugify.transform(event.name)}`);
+  }
+  print(event: Breed) {
+    console.log('input select', event.name);
+    this.dogService.get_breed_wiki(event.name).subscribe((data: any) => {
+      console.log('wiki dog', data);
+    });
   }
 
   search_ngb: OperatorFunction<string, readonly Breed[]> = (text$: Observable<string>) =>

@@ -1,4 +1,4 @@
-<div class="form-group">
+<!-- <div class="form-group">
   <label for="dogsearch">Dog Search</label>
   <input
     type="text"
@@ -11,7 +11,7 @@
     placeholder="Search dogs..."
   />
   <small id="helpId" class="form-text text-muted">Help text</small>
-</div>
+</div> -->
 
 <div class="mb-3 row">
   <div class="col">
@@ -24,12 +24,15 @@
       [ngbTypeahead]="search_ngb"
       [resultTemplate]="rt"
       [inputFormatter]="formatter"
+      (selectItem)="route_to_breed($event.item)"
     />
   </div>
 </div>
 
 <ng-template #rt let-r="result" let-t="term">
-  <img [src]="r.image.url" class="me-1" style="width: 20px" />
-  <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
-  <small>{{ r.bred_for }}</small>
+  <button class="text-left">
+    <img [src]="r.image.url" class="me-1" style="width: 20px" />
+    <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+    <small>{{ r.bred_for }}</small>
+  </button>
 </ng-template>

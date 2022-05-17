@@ -40,3 +40,12 @@ export const get_random_fact = functions.https.onRequest(async (request, respons
   const data = await fetchRes.json();
   response.send(data);
 });
+
+// wiki dog info
+export const get_breed_wiki = functions.https.onRequest(async (request, response) => {
+  const fetchRes = await fetch(
+    `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${request.query['breed']}`
+  );
+  const data = await fetchRes.json();
+  response.send(data);
+});

@@ -15,6 +15,7 @@ const routes = {
   breeds: () => '/get_breeds',
   searchBreeds: (breed: string) => `/search_breed?breed=${breed}`,
   breedImages: (breed: Params) => `/breed_images?breed=${breed}`,
+  breedWiki: (breed: string) => `/get_breed_wiki?breed=${breed}`,
   randomFact: () => '/get_random_fact',
 };
 
@@ -43,6 +44,21 @@ export class DogServiceService {
     return this.httpClient.get(routes.searchBreeds(breed), { params: params }).pipe(
       map((body: any) => body),
       catchError(() => of('Error, could not load breed :-('))
+    );
+  }
+
+  // get breed wiki
+  get_breed_wiki(breed: string): Observable<any> {
+    return this.httpClient.get(routes.breedWiki(breed)).pipe(
+      map((body: any) => {
+        const res = body.query.pages;
+
+        for (const key in res) {
+          const indexedItem = res[key];
+          return indexedItem;
+        }
+      }),
+      catchError(() => of('Error, could not load breeds :-('))
     );
   }
 
