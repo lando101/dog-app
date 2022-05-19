@@ -16,16 +16,16 @@
   fxLayout="row nowrap"
   fxLayoutAlign="start center"
   fxLayoutGap="5px"
-  class="input-group form-control text-gray-500 rounded-full border border-solid border-gray-200 shadow-md hover:shadow-xl focus:shadow-xl px-2"
+  class="input-group form-control tw-text-gray-500 tw-rounded-full tw-border-solid tw-border tw-border-gray-100 tw-shadow-sm hover:tw-shadow-md focus:tw-shadow-md px-2"
 >
-  <span class="text-white d-flex search-icon-container bg-indigo-700">
+  <span class="tw-text-white d-flex search-icon-container tw-bg-indigo-700">
     <i class="fi fi-br-search mt-1"></i>
   </span>
   <input
     placeholder="Search breed, breed type or origin"
     id="typeahead-template"
     type="text"
-    class="border-0 focus:outline-none focus:ring-0 w-100 py-1 placeholder:font-bold placeholder:text-gray-800"
+    class="tw-border-0 focus:tw-outline-none focus:tw-ring-0 w-100 py-1 placeholder:tw-font-bold placeholder:tw-text-gray-800"
     [(ngModel)]="searchStr"
     [ngbTypeahead]="search_ngb"
     [resultTemplate]="rt"

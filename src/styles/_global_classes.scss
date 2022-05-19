@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
+
 .brand-logo-font {
   font-family: "Chewy", cursive;
+}
+
+// borders
+::ng-deep .border {
+  border-style: solid !important;
 }

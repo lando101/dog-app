@@ -1,15 +1,18 @@
 module.exports = {
-  prefix: '',
-  purge: {
-    content: ['./src/**/*.{html,ts}'],
-  },
+  prefix: 'tw-',
+  important: true,
+  content: ['./src/**/*.{html,ts}', './projects/**/*.{html,ts}'],
   mode: 'jit',
-  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {},
-  },
+  // theme: {
+  //   screens: {
+  //     'sm': '576px',
+  //     'md': '768px',
+  //     'lg': '992px',
+  //     'xl': '1200px',
+  //   }
+  // },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };

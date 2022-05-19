@@ -21,6 +21,7 @@ export const environment = {
     measurementId: 'G-K27LF0NSR6',
   },
   production: false,
+  TAILWIND_MODE: 'build',
   version: env['npm_package_version'] + '-dev',
   serverUrl: '/api',
   defaultLanguage: 'en-US',
