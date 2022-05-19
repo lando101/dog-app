@@ -12,21 +12,26 @@
   />
   <small id="helpId" class="form-text text-muted">Help text</small>
 </div> -->
-<h1 class="font-bold text-gray-600">test</h1>
-<div class="mb-3 row">
-  <div class="col">
-    <input
-      placeholder="Search doggies..."
-      id="typeahead-template"
-      type="text"
-      class="form-control col text-gray-500"
-      [(ngModel)]="searchStr"
-      [ngbTypeahead]="search_ngb"
-      [resultTemplate]="rt"
-      [inputFormatter]="formatter"
-      (selectItem)="route_to_breed($event.item)"
-    />
-  </div>
+<div
+  fxLayout="row nowrap"
+  fxLayoutAlign="start center"
+  fxLayoutGap="5px"
+  class="input-group form-control text-gray-500 rounded-full border border-solid border-gray-200 shadow-md hover:shadow-xl focus:shadow-xl px-2"
+>
+  <span class="text-white d-flex search-icon-container bg-indigo-700">
+    <i class="fi fi-br-search mt-1"></i>
+  </span>
+  <input
+    placeholder="Search breed, breed type or origin"
+    id="typeahead-template"
+    type="text"
+    class="border-0 focus:outline-none focus:ring-0 w-100 py-1 placeholder:font-bold placeholder:text-gray-800"
+    [(ngModel)]="searchStr"
+    [ngbTypeahead]="search_ngb"
+    [resultTemplate]="rt"
+    [inputFormatter]="formatter"
+    (selectItem)="route_to_breed($event.item)"
+  />
 </div>
 
 <ng-template #rt let-r="result" let-t="term">

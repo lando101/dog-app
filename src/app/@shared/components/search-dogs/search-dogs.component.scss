@@ -1,1 +1,16 @@
 @import "../../../../styles/global";
+
+.placeholder:focus {
+  @apply placeholder-gray-600;
+}
+
+.search-icon-container {
+  margin-right: 5px;
+  color: white !important;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px !important;
+}

@@ -5,6 +5,7 @@ import FuzzySearch from 'fuzzy-search';
 import { FilterByPipe, GroupByPipe, SlugifyPipe } from 'ngx-pipes';
 import { debounceTime, map, Observable, OperatorFunction } from 'rxjs';
 import { Breed } from 'src/models/breed.model';
+
 // import { FuzzySearch } from 'fuzzy-search';
 // const FuzzySearch = require("fuzzy-search");
 
