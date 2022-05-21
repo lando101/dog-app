@@ -18,18 +18,19 @@
         >
           <p class="tw-text-md tw-text-gray-500 tw-font-semibold mb-1">Dog Fact</p>
           <h1
+            *ngIf="fact"
             class="tw-leading-relaxed tw-font-bold tw-font-sans"
             [ngClass]="{
-              'tw-text-2xl': fact!.length > 180,
-              'tw-text-3xl': fact!.length <= 180 && fact!.length > 90,
-              'tw-text-4xl': fact!.length <= 90
+              'tw-text-2xl': fact.length > 180,
+              'tw-text-3xl': fact.length <= 180 && fact.length > 90,
+              'tw-text-4xl': fact.length <= 90
             }"
           >
             {{ fact }}
           </h1>
           <div class="mt-3" fxLayout="row" fxLayoutGap="15px">
             <button class="action-btn btn-shadow-amber py-2 px-3">Next Fact</button>
-            <button class="secondary-btn btn-shadow px-3 py-2">View Dogs</button>
+            <button class="secondary-btn btn-shadow px-3 py-2">See Furry Friends</button>
           </div>
         </div>
         <div class="tw-max-w-xl">
