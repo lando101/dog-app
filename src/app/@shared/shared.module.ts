@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+import { DogTabsComponent } from './components/dog-tabs/dog-tabs.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
     FlexLayoutModule,
     NgxBootstrapIconsModule.pick(allIcons),
   ],
-  declarations: [LoaderComponent, SearchDogsComponent],
-  exports: [LoaderComponent, SearchDogsComponent],
+  declarations: [LoaderComponent, SearchDogsComponent, DogTabsComponent],
+  exports: [LoaderComponent, SearchDogsComponent, FlexLayoutModule, NgxBootstrapIconsModule, DogTabsComponent],
 })
 export class SharedModule {}

@@ -1,0 +1,47 @@
+<!-- <div class="btn-group" role="group">
+  <label [ngClass]="{'secondary-btn': model.left}" class="tw-rounded-xl" ngbButtonLabel>
+    <input type="checkbox" class="btn-check" ngbButton [(ngModel)]="model.left"> Left (pre-checked)
+  </label>
+  <label [ngClass]="{'secondary-btn': model.middle}" class="tw-rounded-xl" ngbButtonLabel>
+    <input type="checkbox" class="btn-check" ngbButton [(ngModel)]="model.middle"> Middle
+  </label>
+  <label class="btn-primary" ngbButtonLabel>
+    <input type="checkbox" class="btn-check" ngbButton [(ngModel)]="model.right"> Right
+  </label>
+</div> -->
+<div fxLayout="row" fxLayoutAlign="center start">
+  <div
+    fxLayout="row"
+    fxLayoutGap="25px"
+    class="btn-group"
+    role="group"
+    ngbRadioGroup
+    name="radioBasic"
+    [(ngModel)]="model"
+  >
+    <label
+      [ngClass]="{ 'secondary-btn tw-border-0': model === 1, 'trans-btn tw-border-0': model !== 1 }"
+      class="tw-rounded-xl btn-shadow-trans"
+      ngbButtonLabel
+      class="btn-primary"
+    >
+      <input ngbButton type="radio" class="btn-check" [value]="1" /> Breeds
+    </label>
+    <label
+      [ngClass]="{ 'secondary-btn tw-border-0': model === 2, 'trans-btn tw-border-0': model !== 2 }"
+      class="tw-rounded-xl btn-shadow-trans"
+      ngbButtonLabel
+      class="btn-primary"
+    >
+      <input ngbButton type="radio" class="btn-check" [value]="2" /> Type
+    </label>
+    <label
+      [ngClass]="{ 'secondary-btn tw-border-0': model === 3, 'trans-btn tw-border-0': model !== 3 }"
+      class="tw-rounded-xl btn-shadow-trans"
+      ngbButtonLabel
+      class="btn-primary"
+    >
+      <input ngbButton type="radio" class="btn-check" [value]="3" /> Origin
+    </label>
+  </div>
+</div>

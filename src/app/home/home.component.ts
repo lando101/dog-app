@@ -12,6 +12,7 @@ import { QuoteService } from './quote.service';
 })
 export class HomeComponent implements OnInit {
   quote: string | undefined;
+  fact: string | undefined;
   breeds: any[] = [];
   isLoading = false;
 
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
     //     this.quote = quote;
     //   });
     this.getBreeds();
-    this.searchBreeds();
+    // this.searchBreeds();
   }
   getBreeds() {
     this.dogService
@@ -38,28 +39,29 @@ export class HomeComponent implements OnInit {
       .pipe(
         finalize(() => {
           // this.isLoading = false;
+          this.getRandomFact();
         })
       )
       .subscribe((breeds) => {
         this.breeds = breeds;
-        this.getRandomFact();
+        // this.getRandomFact();
         console.log('breeds', breeds);
       });
   }
 
-  searchBreeds(query?: string) {
-    this.dogService
-      .search_breeds(query ? query : 'greyhound')
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe((breeds) => {
-        this.breeds = breeds;
-        console.log('search breeds', breeds);
-      });
-  }
+  // searchBreeds(query?: string) {
+  //   this.dogService
+  //     .search_breeds(query ? query : 'greyhound')
+  //     .pipe(
+  //       finalize(() => {
+  //         this.isLoading = false;
+  //       })
+  //     )
+  //     .subscribe((breeds) => {
+  //       this.breeds = breeds;
+  //       console.log('search breeds', breeds);
+  //     });
+  // }
 
   getRandomFact() {
     this.dogService
@@ -70,6 +72,7 @@ export class HomeComponent implements OnInit {
         })
       )
       .subscribe((fact) => {
+        this.fact = fact.facts[0];
         console.log('facts', fact);
       });
   }

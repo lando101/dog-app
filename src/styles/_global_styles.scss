@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
+
+.brand-logo-font {
+  font-family: "Chewy", cursive;
+}
+
+// borders
+::ng-deep .border {
+  border-style: solid !important;
+}
+
+// buttons
+.action-btn {
+  @apply tw-rounded-xl;
+  @apply tw-bg-amber-200;
+  @apply tw-text-black;
+  @apply tw-font-bold;
+  border-radius: 0.75rem !important;
+  border: none !important;
+}
+
+.secondary-btn {
+  @apply tw-rounded-xl;
+  @apply tw-bg-gray-200;
+  @apply tw-text-black;
+  @apply tw-font-bold;
+  border-radius: 0.75rem !important;
+  border: none !important;
+}
+
+.trans-btn {
+  @apply tw-rounded-xl;
+  @apply tw-bg-transparent;
+  @apply tw-text-gray-700;
+  @apply tw-font-semibold;
+  border-radius: 0.75rem !important;
+  border: none !important;
+  &:hover {
+    @apply tw-bg-gray-100;
+    // @apply tw-shadow-lg;
+  }
+}
+
+// .btn-shadow-trans {
+//   box-shadow: none;
+//   transition: box-shadow .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+//   &:hover{
+//     @apply tw-bg-gray-200;
+//     @apply tw-shadow-lg;
+//   }
+// }
+
+.btn-shadow-amber {
+  box-shadow: none;
+  transition: box-shadow 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  &:hover {
+    @apply tw-shadow-lg tw-shadow-amber-100;
+  }
+}
+
+.btn-shadow {
+  box-shadow: none;
+  transition: box-shadow 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  &:hover {
+    @apply tw-shadow-lg;
+  }
+}
