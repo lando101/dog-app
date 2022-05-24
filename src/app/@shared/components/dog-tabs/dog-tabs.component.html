@@ -9,7 +9,26 @@
     <input type="checkbox" class="btn-check" ngbButton [(ngModel)]="model.right"> Right
   </label>
 </div> -->
-<div fxLayout="row" fxLayoutAlign="center start">
+<div
+  fxLayout="row"
+  class="tw-items-center"
+  [ngClass]="{ 'tw-justify-between': model === 1, 'tw-justify-center': model !== 1 }"
+>
+  <div *ngIf="model === 1">
+    <div ngbDropdown class="d-inline-block">
+      <button
+        type="button"
+        class="tw-rounded-xl tw-border tw-border-gray-200 px-3 py-2 tw-transition-colors hover:tw-bg-gray-100"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      >
+        {{ selected_str }}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button (click)="selected_str = item.name" *ngFor="let item of order" ngbDropdownItem>{{ item.name }}</button>
+      </div>
+    </div>
+  </div>
   <div
     fxLayout="row"
     fxLayoutGap="25px"
@@ -43,5 +62,70 @@
     >
       <input ngbButton type="radio" class="btn-check" [value]="3" /> Origin
     </label>
+    <label
+      [ngClass]="{ 'secondary-btn tw-border-0': model === 4, 'trans-btn tw-border-0': model !== 4 }"
+      class="tw-rounded-xl btn-shadow-trans"
+      ngbButtonLabel
+      class="btn-primary"
+    >
+      <input ngbButton type="radio" class="btn-check" [value]="4" /> Temperament
+    </label>
+    <label
+      [ngClass]="{ 'secondary-btn tw-border-0': model === 5, 'trans-btn tw-border-0': model !== 5 }"
+      class="tw-rounded-xl btn-shadow-trans"
+      ngbButtonLabel
+      class="btn-primary"
+    >
+      <input ngbButton type="radio" class="btn-check" [value]="5" /> Size
+    </label>
+  </div>
+  <button
+    *ngIf="model === 1"
+    (click)="collapse.toggle()"
+    [attr.aria-expanded]="!isCollapsed"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutGap="5px"
+    class="tw-rounded-xl tw-border tw-border-gray-200 px-3 py-2 tw-transition-colors hover:tw-bg-gray-100"
+  >
+    <i class="fi fi-rr-filter me-1"></i> Filters
+  </button>
+</div>
+<div class="mt-2" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+  <div class="card tw-border-0 tw-bg-transparent">
+    <div class="card-body">Filters go here</div>
   </div>
 </div>
+<div class="tw-py-12">
+  <div *ngIf="model === 1; else type">
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <p class="tw-text-gray-500 tw-text-sm">Results ({{ breeds.length }})</p>
+    </div>
+    <div
+      fxLayout="row wrap"
+      fxLayoutGap="75px grid"
+      fxLayoutAlign.gt-md="space-between center"
+      fxLayoutAlign.lt-lg="center start"
+    >
+      <div
+        *ngFor="
+          let breed of breeds | slice: (this.page - 1) * this.pageSize:(this.page - 1) * this.pageSize + this.pageSize
+        "
+      >
+        <app-dog-card [breed]="breed"></app-dog-card>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center start" class="mt-5">
+      <ngb-pagination
+        (pageChange)="paginate()"
+        [pageSize]="pageSize"
+        [collectionSize]="breeds.length"
+        [(page)]="page"
+        [maxSize]="5"
+        [boundaryLinks]="true"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>
+
+<ng-template #type></ng-template>

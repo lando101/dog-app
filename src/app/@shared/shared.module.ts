@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { DogTabsComponent } from './components/dog-tabs/dog-tabs.component';
+import { DogCardComponent } from './components/dog-card/dog-card.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,14 @@ import { DogTabsComponent } from './components/dog-tabs/dog-tabs.component';
     FlexLayoutModule,
     NgxBootstrapIconsModule.pick(allIcons),
   ],
-  declarations: [LoaderComponent, SearchDogsComponent, DogTabsComponent],
-  exports: [LoaderComponent, SearchDogsComponent, FlexLayoutModule, NgxBootstrapIconsModule, DogTabsComponent],
+  declarations: [LoaderComponent, SearchDogsComponent, DogTabsComponent, DogCardComponent],
+  exports: [
+    LoaderComponent,
+    SearchDogsComponent,
+    FlexLayoutModule,
+    NgxBootstrapIconsModule,
+    DogTabsComponent,
+    DogCardComponent,
+  ],
 })
 export class SharedModule {}

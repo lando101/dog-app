@@ -1,0 +1,39 @@
+<button *ngIf="breed" fxLayout="column" class="tw-w-80 tw-h-[350px] tw-transition-shadow" fxLayoutGap="15px">
+  <div fxLayout="row" fxLayoutAlign="center start">
+    <div
+      class="tw-rounded-lg tw-w-80 tw-h-[200px] tw-overflow-hidden tw-justify-center"
+      fxLayout="row"
+      [ngClass]="{
+        'tw-items-center': breed.image.width / breed.image.height <= 0.68,
+        'tw-items-start': breed.image.width / breed.image.height > 0.68
+      }"
+    >
+      <img [alt]="'Picture of a ' + breed.name" class="tw-w-80" src="{{ breed.image.url }}" />
+    </div>
+  </div>
+  <div fxLayout="column" class="px-2 pb-2 h-100 w-100 tw-text-left" fxLayoutAlign="space-between start">
+    <div fxLayout="column" class="w-100 px-1">
+      <div>
+        <p class="tw-text-sm tw-text-gray-500 tw-font-semilight mb-0">{{ breed.breed_group || 'No type' }}</p>
+        <p class="tw-text-base tw-text-gray-800 tw-font-bold mb-2 tw-truncate">{{ breed.name }}</p>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10%">
+        <div>
+          <!-- <p class="tw-text-xs tw-text-gray-400 tw-font-semilight mb-0">Life Span</p>
+          <p class="tw-text-sm tw-text-gray-700 tw-font-semibold mb-0">{{breed.life_span || 'Unlimited life'}}</p> -->
+
+          <p class="tw-text-sm tw-text-gray-400 tw-font-light mb-0">{{ breed.life_span || 'Unlimited life' }}</p>
+        </div>
+        <div>
+          <!-- <p class="tw-text-xs tw-text-gray-400 tw-font-semilight mb-0">Weight</p>
+          <p class="tw-text-sm tw-text-gray-700 tw-font-semibold mb-0">{{breed.weight.imperial + 'lbs' || 'Unlimited life'}}</p> -->
+
+          <p class="tw-text-sm tw-text-gray-400 tw-font-light mb-0">
+            {{ breed.weight.imperial + 'lbs' || 'Unlimited life' }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <span class="secondary-btn btn-shadow py-2 px-3 tw-text-sm w-100 tw-text-center">Learn More</span>
+  </div>
+</button>

@@ -1,6 +1,6 @@
-<div fxLayout="column" fxLayoutGap="8rem">
-  <section>
-    <div class="container-fluid tw-max-w-screen-2xl pt-4">
+<div fxLayout="column" fxLayoutGap="8rem" class="tw-bg-slate-50">
+  <section class="hero-bg">
+    <div class="container-fluid tw-max-w-screen-2xl tw-py-12">
       <div
         fxLayout.gt-sm="row"
         fxLayout.lt-md="column"
@@ -16,10 +16,10 @@
           fxLayoutAlign.gt-sm="center start"
           fxLayoutAlign.lt-md="center center"
         >
-          <p class="tw-text-md tw-text-gray-500 tw-font-semibold mb-1">Dog Fact</p>
+          <p class="tw-text-md tw-text-amber-500 tw-font-semibold mb-1">Dog Fact</p>
           <h1
             *ngIf="fact"
-            class="tw-leading-relaxed tw-font-bold tw-font-sans"
+            class="tw-leading-relaxed tw-font-bold"
             [ngClass]="{
               'tw-text-2xl': fact.length > 180,
               'tw-text-3xl': fact.length <= 180 && fact.length > 90,
@@ -29,8 +29,8 @@
             {{ fact }}
           </h1>
           <div class="mt-3" fxLayout="row" fxLayoutGap="15px">
-            <button class="action-btn btn-shadow-amber py-2 px-3">Next Fact</button>
-            <button class="secondary-btn btn-shadow px-3 py-2">See Furry Friends</button>
+            <button class="action-btn btn-shadow-amber py-2 px-3" (click)="getRandomFact()">Next Fact</button>
+            <button class="secondary-btn tw-bg-fuchsia-100 btn-shadow px-3 py-2">See Furry Friends</button>
           </div>
         </div>
         <div class="tw-max-w-xl">
@@ -47,7 +47,7 @@
   </section>
   <section>
     <div class="container-fluid tw-max-w-screen-2xl">
-      <app-dog-tabs></app-dog-tabs>
+      <app-dog-tabs [breeds]="breeds"></app-dog-tabs>
     </div>
   </section>
 </div>

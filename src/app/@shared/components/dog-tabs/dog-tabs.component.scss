@@ -1,1 +1,36 @@
 @import "../../../../styles/global";
+
+::ng-deep .page-item.disabled .page-link {
+  color: #b3bdc6;
+  pointer-events: none;
+  background-color: #fff0 !important;
+  border-color: transparent !important;
+}
+::ng-deep .page-item.active .page-link {
+  z-index: 3;
+  color: #212529;
+  background-color: #fde68a;
+  border-color: #fde68a;
+  font-weight: 700;
+  border-radius: 10px !important;
+}
+
+::ng-deep .page-link {
+  position: relative;
+  display: block;
+  color: #6f7c89;
+  text-decoration: none;
+  background-color: #fff0;
+  border: 1px solid #dee2e600;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  border-radius: 10px !important;
+}
+
+::ng-deep .page-link:hover {
+  z-index: 2;
+  color: #212529;
+  background-color: #fde68a75;
+  border-color: transparent;
+  border-radius: 10px;
+}
